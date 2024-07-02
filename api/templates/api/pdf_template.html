@@ -1,0 +1,221 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Web Page</title>
+    <link rel="stylesheet" href="{% static 'api/css/styles.css' %}">
+</head>
+<style>
+    body {
+    font-family: Arial, sans-serif;
+    margin-left: 0%;
+    margin-right: 0%;
+    /* Added left and right margins */
+    display: flex;
+    flex-direction: column;
+    max-height:100vh;
+    
+}
+main {
+    flex: 1;
+}
+.header { /* Adjusted width to account for margins */ /* Adjusted header height */
+    background-size: cover;
+    background-position: center;
+    margin: 0; /* Center the header horizontally */
+}
+.image-row {
+    display: flex;
+    justify-content: space-between; /* Distribute space between images */
+    margin: 15%; /* Added top and bottom margins */
+    margin-top: -150px; /* Space between header and images */
+    margin-bottom: 60px;
+}
+.img1 {
+    width: 15%; /* Adjust width to fit three images in a row */
+    height: auto; /* Maintain aspect ratio */
+}
+.img2 {
+    width: 250px; /* Adjust width to fit three images in a row */
+    height: 100px; /* Maintain aspect ratio */
+}
+.img3 {
+    width: 90px;
+    height: 30px;
+}
+.patient-details {
+    display: flex;
+    flex-direction: column;
+    margin-left: 10px;
+    margin-right: 10px;
+}
+.patient-details .row {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end; /* Align items to the bottom */
+    margin-bottom: 20px;
+}
+.patient-details .field {
+    color: #004185;
+    margin-right: 10px;/* Adjust line-height to align with data line height */
+}
+
+/* 
+.patient-details #contact{
+
+    margin-left: 750px;
+}*/
+
+.patiendfield{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    width: 100vw;
+}
+
+.agefield{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    width: 100vw;
+}
+.namefield{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    width: 100vw;
+}
+.blue_line {
+    border: 1px solid #004185;
+    margin-top: 20px;
+}
+.doctor-section {
+   
+    display: flex;
+    margin-top: 20px;
+}
+.bodysize{
+    max-height:800
+}
+.doctor-section .left, .doctor-section .right {
+    padding: 20px;
+}
+.doctor-section .left {
+    width: 30%;
+    display: flex;
+    flex-direction: column;
+}
+.doctor-section .right {
+    width: 70%;
+    display: flex;
+    flex-direction: column;
+    margin-left: 20px;
+}
+.doctor-section .separator {
+    width: 0;
+    border-left: 2px dotted maroon;
+    margin: 0 20px;
+}
+.doctor-section .field {
+    color: #004185;
+}
+.doctor-section .data {
+    flex: 1;
+    background-color: white;
+    height: 1px; /* Line for data */
+}
+.doctor-section .right .data {
+    margin-bottom: 80px;
+}
+.doctor-section{
+    max-height:545px;
+}
+
+footer {
+    background-color: #3FC1BE;
+    color: white;
+    display: flex;
+    justify-content: space-between;
+    padding: 10px 20px;
+    height: 50px; /* Reduced height */
+    box-sizing: border-box; /* Include padding in the element's total width and height */
+}
+
+</style>
+
+<body >
+    <header class="header" style="background-image: url('static 'header.jpg')">
+        <img src="{% static 'header.jpg' %}" alt="Header Image" class="print-header" style="width:100vw;">
+    </header>
+    <div class="bodysize"> 
+    <main>
+        <div class="image-row">
+            <img src="{% static 'drimage.png' %}" alt="Image 1" class="img1">
+            <img src="{% static 'drname.png' %}" alt="Image 2" class="img2">
+            <img src="{% static 'logo.png' %}" alt="Image 3" class="img3">
+        </div>
+        <div class="patient-details">
+        <div class="patientfield">
+            <div class="row">
+                <div class="field">Patient ID : {{ patient_id }}</div>
+                
+                <div class="field" id="date">Date:  {{ date }}</div>
+                
+            </div>
+        </div>
+            <div class="row">
+                <div  class="namefield">
+                    <div class="field" id="name">Name : {{ name }}</div>
+                <div class="field" id="address">Address: {{ address }}</div>
+                
+                <div class="field" id="contact">Contact:  {{ contact }}</div>
+                </div>
+            </div>
+            <div class="row">
+            <div class="agefield">
+                <div class="field" id="age">Age : {{ age }}</div>
+                <div class="field" id="sex">Sex : {{ sex }}</div>
+                <div class="field" id="height">Height : {{ height }}</div>
+                <div class="field" id="weight">Weight : {{ weight }}</div>
+                <div class="field" id="bp">BP : {{ bp }}</div>
+            </div>
+            </div>
+        </div>
+        <hr class="blue_line">
+
+        <div class="doctor-section">
+            <div class="left">
+                <div class="field">Investigation:</div>
+                <div class="data">{{ investigation }}</div>
+                <div class="field">Advice:</div>
+                <div class="data">{{ advice }}</div>
+            </div>
+            <div class="separator"></div>
+            <div class="right">
+                <div class="field">Chief Complaints:</div>
+                <div class="data">{{ chief_complaints }}</div>
+                <div class="field">Examination findings:</div>
+                <div class="data">{{ examination_findings }}</div>
+                <div class="field">Diagnosis:</div>
+                <div class="data">{{ diagnosis }}</div>
+                <div class="field">Treatment Plan:</div>
+                <div class="data">{{ treatment_plan }}</div>
+                <div class="field">Medications:</div>
+                <div class="data">{{ medications }}</div>
+                <div class="field">Next Visit Date: {{ next_date }}</div>
+            </div>
+        </div>
+    </main>
+     <footer>
+        <div>{{footer_address}}</div>
+        <div>www.drrichagangwar.com</div>
+    </footer>
+    </div>
+   
+</body>
+</html>
