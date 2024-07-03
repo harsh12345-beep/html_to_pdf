@@ -17,7 +17,6 @@ from bs4 import BeautifulSoup
 from google.oauth2 import service_account
 
 
-
 SCOPES = ['https://www.googleapis.com/auth/drive.file']
 CREDS_PATH = 'path/to/credentials.json'
 
@@ -67,6 +66,9 @@ def grant_drive_permission(file_id, email, credentials_file, role='reader'):
         print(f'Permission ID: {permission.get("id")}')
     except Exception as e:
         print(f'Error granting permission: {str(e)}')
+
+
+
 
 @api_view(['POST'])
 def create_pdf_api(request):
